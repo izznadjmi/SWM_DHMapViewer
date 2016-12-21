@@ -1,8 +1,5 @@
 package com.SWM.MapViewer.Main;
 
-import java.util.Formatter;
-
-import com.SWM.MapViewer.ViewApp.Viewer_Controller;
 import com.neet.DiamondHunter.Main.Game;
 
 import javafx.fxml.FXML;
