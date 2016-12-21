@@ -8,6 +8,7 @@ package com.neet.DiamondHunter.GameState;
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -173,60 +174,48 @@ public class PlayState extends GameState {
 	}
 	
 	private void populateItems() {
-		
 		Item item;
-		int axeRow = -1, axeCol = -1;
-		int boatRow = -1, boatCol = -1;
+		Scanner axeLoc = null;
 		
-		Scanner file = null;
 		try
 		{
-			file = new Scanner(new File("Resources/Locations/AxeBoatPosition.file"));
+			axeLoc = new Scanner(new File("Resources/Locations/AxeLoc.file"));
 		}
-		catch (Exception e)
+		catch (FileNotFoundException e)
 		{
-			System.out.println("Cannot read from file");
+			System.out.println("File not found!");
 		}
 		
-		while(file.hasNext()){
-	    	if(Integer.parseInt(file.next())==0){
-	    	axeRow=Integer.parseInt(file.next());
-	    	System.out.println("Axe Row: " + axeRow);
-	    	axeCol=Integer.parseInt(file.next());
-	    	System.out.println("Axe Column: " + axeCol);
-	    	}
-	    	else{
-	    	boatRow=Integer.parseInt(file.next());
-	    	System.out.println("Boat Row: " + boatRow);
-	    	boatCol=Integer.parseInt(file.next());
-	    	System.out.println("Boat Column: " + boatCol);
-	    	}
-    	}
+		String[] values = axeLoc.nextLine().trim().split(" ");
+		int[] axeVal = new int[2];
+		axeVal[0] = Integer.parseInt(values[0]);
+		axeVal[1] = Integer.parseInt(values[1]);
 		
 		item = new Item(tileMap);
 		item.setType(Item.AXE);
-		if(axeRow == -1)
-		{
-			item.setTilePosition(26, 37);
-		}
-		else
-		{
-			item.setTilePosition(axeRow, axeCol);
-		}
+		item.setTilePosition(axeVal[0], axeVal[1]);
 		items.add(item);
+		
+		Scanner boatLoc = null;
+		
+		try 
+		{
+			boatLoc = new Scanner(new File("Resources/Locations/BoatLoc.file"));
+		}
+		catch (FileNotFoundException e)
+		{
+			System.out.println("File not found!");
+		}
+		
+		values = boatLoc.nextLine().trim().split(" ");
+		int[] boatVal = new int[2];
+		boatVal[0] = Integer.parseInt(values[0]);
+		boatVal[1] = Integer.parseInt(values[1]);
 		
 		item = new Item(tileMap);
 		item.setType(Item.BOAT);
-		if(boatRow == -1)
-		{
-			item.setTilePosition(12, 4);
-		}
-		else
-		{
-			item.setTilePosition(boatRow, boatCol);
-		}
+		item.setTilePosition(boatVal[0], boatVal[1]);
 		items.add(item);
-		
 	}
 	
 	public void update() {
