@@ -1,7 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
-	
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
-	
-<AnchorPane xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.SWM.MapViewer.Main.Launcher_Controller">
-	<!-- TODO Add Nodes -->
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="320.0" prefWidth="480.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.SWM.MapViewer.Main.Launcher_Controller">
+   <children>
+      <Button fx:id="GameLaunch" layoutX="60.0" layoutY="200.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="150.0" text="Play Game">
+         <font>
+            <Font name="Diamond Script" size="24.0" />
+         </font></Button>
+      <Button fx:id="ViewerLaunch" layoutX="270.0" layoutY="200.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="150.0" text="Map Viewer">
+         <font>
+            <Font name="Diamond Script" size="23.0" />
+         </font></Button>
+      <Label layoutX="47.0" layoutY="70.0" text="DIAMOND HUNTER">
+         <font>
+            <Font name="Diamond Script" size="50.0" />
+         </font>
+      </Label>
+   </children>
 </AnchorPane>
