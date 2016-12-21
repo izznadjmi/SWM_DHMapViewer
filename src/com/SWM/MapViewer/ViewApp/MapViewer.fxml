@@ -1,7 +1,135 @@
 <?xml version="1.0" encoding="UTF-8"?>
-	
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.SeparatorMenuItem?>
 <?import javafx.scene.layout.AnchorPane?>
-	
-<AnchorPane xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.SWM.MapViewer.ViewApp.Viewer_Controller">
-	<!-- TODO Add Nodes -->
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+
+<AnchorPane fx:id="base" maxHeight="665.0" minHeight="665.0" prefHeight="665.0" prefWidth="840.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.SWM.MapViewer.ViewApp.Viewer_Controller">
+   <children>
+      <MenuBar maxHeight="25.0" minHeight="25.0" prefHeight="25.0" prefWidth="840.0" AnchorPane.bottomAnchor="640.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <menus>
+          <Menu mnemonicParsing="false" text="File">
+            <items>
+              <MenuItem mnemonicParsing="false" text="Run Game" />
+              <MenuItem fx:id="ExitMenu" mnemonicParsing="false" text="Exit" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Edit">
+            <items>
+              <MenuItem mnemonicParsing="false" text="Edit Axe Location" />
+                  <MenuItem mnemonicParsing="false" text="Edit Boat Location" />
+                  <SeparatorMenuItem mnemonicParsing="false" />
+                  <MenuItem mnemonicParsing="false" text="Set Default Axe Location" />
+                  <MenuItem mnemonicParsing="false" text="Set Default Boat Location" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Help">
+            <items>
+              <MenuItem mnemonicParsing="false" text="About" />
+            </items>
+          </Menu>
+        </menus>
+      </MenuBar>
+      <GridPane fx:id="grid" layoutY="25.0">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="16.0" minWidth="16.0" prefWidth="16.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="16.0" minWidth="16.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="16.0" minWidth="16.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="16.0" minWidth="16.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="16.0" minWidth="16.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="16.0" minWidth="16.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="16.0" minWidth="16.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="16.0" minWidth="16.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="16.0" minWidth="16.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="16.0" minWidth="16.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="16.0" minWidth="16.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="16.0" minWidth="16.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="16.0" minWidth="16.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="16.0" minWidth="16.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="16.0" minWidth="16.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="16.0" minWidth="16.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="16.0" minWidth="16.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="16.0" minWidth="16.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="16.0" minWidth="16.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="16.0" minWidth="16.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="16.0" minWidth="16.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="16.0" minWidth="16.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="16.0" minWidth="16.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="16.0" minWidth="16.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="16.0" minWidth="16.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="16.0" minWidth="16.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="16.0" minWidth="16.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="16.0" minWidth="16.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="16.0" minWidth="16.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="16.0" minWidth="16.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="16.0" minWidth="16.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="16.0" minWidth="16.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="16.0" minWidth="16.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="16.0" minWidth="16.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="16.0" minWidth="16.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="16.0" minWidth="16.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="16.0" minWidth="16.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="16.0" minWidth="16.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="16.0" minWidth="16.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="16.0" minWidth="16.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints maxHeight="16.0" minHeight="16.0" prefHeight="16.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="16.0" minHeight="16.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="16.0" minHeight="16.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="16.0" minHeight="16.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="16.0" minHeight="16.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="16.0" minHeight="16.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="16.0" minHeight="16.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="16.0" minHeight="16.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="16.0" minHeight="16.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="16.0" minHeight="16.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="16.0" minHeight="16.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="16.0" minHeight="16.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="16.0" minHeight="16.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="16.0" minHeight="16.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="16.0" minHeight="16.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="16.0" minHeight="16.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="16.0" minHeight="16.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="16.0" minHeight="16.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="16.0" minHeight="16.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="16.0" minHeight="16.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="16.0" minHeight="16.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="16.0" minHeight="16.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="16.0" minHeight="16.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="16.0" minHeight="16.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="16.0" minHeight="16.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="16.0" minHeight="16.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="16.0" minHeight="16.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="16.0" minHeight="16.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="16.0" minHeight="16.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="16.0" minHeight="16.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="16.0" minHeight="16.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="16.0" minHeight="16.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="16.0" minHeight="16.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="16.0" minHeight="16.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="16.0" minHeight="16.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="16.0" minHeight="16.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="16.0" minHeight="16.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="16.0" minHeight="16.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="16.0" minHeight="16.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="16.0" minHeight="16.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+      </GridPane>
+      <AnchorPane layoutX="640.0" layoutY="35.0" prefHeight="640.0" prefWidth="200.0">
+         <children>
+            <Button fx:id="setaxeloc" layoutX="30.0" layoutY="85.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="140.0" text="Edit Axe Location" />
+            <Button fx:id="setboatloc" layoutX="30.0" layoutY="145.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="140.0" text="Edit Boat Location" />
+            <Button fx:id="rundh" layoutX="30.0" layoutY="505.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="140.0" text="Run&#10;Diamond Hunter" textAlignment="CENTER" />
+            <Button layoutX="30.0" layoutY="284.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="140.0" text="Set Default Axe&#10;Location" textAlignment="CENTER" textOverrun="CLIP" wrapText="true" />
+            <Button layoutX="30.0" layoutY="355.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="140.0" text="Set Default Boat&#10;Location" textAlignment="CENTER" wrapText="true" />
+         </children>
+      </AnchorPane>
+   </children>
 </AnchorPane>
