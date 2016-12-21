@@ -19,6 +19,8 @@ import com.neet.DiamondHunter.Manager.GameStateManager;
 import com.neet.DiamondHunter.Manager.JukeBox;
 import com.neet.DiamondHunter.Manager.Keys;
 
+import javafx.application.Platform;
+
 public class GameOverState extends GameState {
 	
 	private Color color;
@@ -39,7 +41,9 @@ public class GameOverState extends GameState {
 		else rank = 4;
 	}
 	
-	public void update() {}
+	public void update() {
+		handleInput();
+	}
 	
 	public void draw(Graphics2D g) {
 		
@@ -70,8 +74,8 @@ public class GameOverState extends GameState {
 	}
 	
 	public void handleInput() {
-		if(Keys.isPressed(Keys.ENTER)) {
-			gsm.setState(GameStateManager.MENU);
+		if(Keys.anyKeyPress()) {
+			System.exit(0);
 			JukeBox.play("collect");
 		}
 	}
