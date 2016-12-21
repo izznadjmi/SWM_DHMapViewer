@@ -16,17 +16,17 @@
         <menus>
           <Menu mnemonicParsing="false" text="File">
             <items>
-              <MenuItem mnemonicParsing="false" text="Run Game" />
-              <MenuItem fx:id="ExitMenu" mnemonicParsing="false" text="Exit" />
+              <MenuItem mnemonicParsing="false" onAction="#RunDH" text="Run Game" />
+              <MenuItem fx:id="ExitMenu" mnemonicParsing="false" onAction="#ExitMapViewer" text="Exit" />
             </items>
           </Menu>
           <Menu mnemonicParsing="false" text="Edit">
             <items>
-              <MenuItem mnemonicParsing="false" text="Edit Axe Location" />
-                  <MenuItem mnemonicParsing="false" text="Edit Boat Location" />
+              <MenuItem mnemonicParsing="false" onAction="#SetAxeLocation" text="Edit Axe Location" />
+                  <MenuItem mnemonicParsing="false" onAction="#SetBoatLocation" text="Edit Boat Location" />
                   <SeparatorMenuItem mnemonicParsing="false" />
-                  <MenuItem mnemonicParsing="false" text="Set Default Axe Location" />
-                  <MenuItem mnemonicParsing="false" text="Set Default Boat Location" />
+                  <MenuItem mnemonicParsing="false" onAction="#AxeToDefault" text="Set Default Axe Location" />
+                  <MenuItem mnemonicParsing="false" onAction="#BoatToDefault" text="Set Default Boat Location" />
             </items>
           </Menu>
           <Menu mnemonicParsing="false" text="Help">
@@ -126,9 +126,9 @@
          <children>
             <Button fx:id="setaxeloc" layoutX="30.0" layoutY="85.0" mnemonicParsing="false" onAction="#SetAxeLocation" prefHeight="50.0" prefWidth="140.0" text="Edit Axe Location" />
             <Button fx:id="setboatloc" layoutX="30.0" layoutY="145.0" mnemonicParsing="false" onAction="#SetBoatLocation" prefHeight="50.0" prefWidth="140.0" text="Edit Boat Location" />
-            <Button fx:id="rundh" layoutX="30.0" layoutY="505.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="140.0" text="Run&#10;Diamond Hunter" textAlignment="CENTER" />
-            <Button layoutX="30.0" layoutY="284.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="140.0" text="Set Default Axe&#10;Location" textAlignment="CENTER" textOverrun="CLIP" wrapText="true" />
-            <Button layoutX="30.0" layoutY="355.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="140.0" text="Set Default Boat&#10;Location" textAlignment="CENTER" wrapText="true" />
+            <Button fx:id="rundh" layoutX="30.0" layoutY="505.0" mnemonicParsing="false" onAction="#RunDH" prefHeight="60.0" prefWidth="140.0" text="Run&#10;Diamond Hunter" textAlignment="CENTER" />
+            <Button layoutX="30.0" layoutY="284.0" mnemonicParsing="false" onAction="#AxeToDefault" prefHeight="60.0" prefWidth="140.0" text="Set Default Axe&#10;Location" textAlignment="CENTER" textOverrun="CLIP" wrapText="true" />
+            <Button layoutX="30.0" layoutY="355.0" mnemonicParsing="false" onAction="#BoatToDefault" prefHeight="60.0" prefWidth="140.0" text="Set Default Boat&#10;Location" textAlignment="CENTER" wrapText="true" />
          </children>
       </AnchorPane>
    </children>

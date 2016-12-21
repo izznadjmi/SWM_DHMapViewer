@@ -2,14 +2,18 @@ package com.SWM.MapViewer.ViewApp;
 
 import java.awt.image.BufferedImage;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Formatter;
 import java.util.ResourceBundle;
+import java.util.Scanner;
+
 import javax.imageio.ImageIO;
 
-import com.SWM.MapViewer.SwingMapView.FileRead;
+import com.neet.DiamondHunter.Main.Game;
+
 import javafx.embed.swing.SwingFXUtils;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -20,16 +24,14 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
+import javafx.stage.Stage;
 
 public class Viewer_Controller implements Initializable{
 	@FXML
-	AnchorPane base;
-	
-	@FXML
-	MenuItem ExitMenu;
-	
-	@FXML
 	GridPane grid;
+	
+	@FXML
+	AnchorPane base;
 	
 	@FXML
 	Button setaxeloc;
@@ -40,10 +42,15 @@ public class Viewer_Controller implements Initializable{
 	@FXML
 	Button rundh;
 	
+	@FXML
+	MenuItem ExitMenu;
+	
 	static Label axe, boat;
 	static int axeFlag = 0, boatFlag = 0;
-	public int axeRow = 1, axeCol = 1;
-	public int boatRow = 1, boatCol = 1;
+	public int axeRow, axeCol;
+	public int boatRow, boatCol;
+	int[] axeVal, boatVal;
+	Scanner file = null, axelocfile = null, boatlocfile = null;
 	ArrayList<ArrayList<Integer>> arr = new ArrayList<>();
 	
 	public Viewer_Controller()
@@ -51,13 +58,107 @@ public class Viewer_Controller implements Initializable{
 		
 	}
 	
+	public void ReadFile()
+	{
+		try
+		{
+			file = new Scanner(new File("Resources/Maps/testmap.map"));
+		}
+		catch(Exception e)
+		{
+			System.out.println("Can't read from file or file not found!");
+		}
+	}
+	
+	public ArrayList<ArrayList<Integer>> GetLines()
+	{
+		String currentLine;
+		ArrayList<ArrayList<Integer>> arr = new ArrayList<>();
+		
+		while(file.hasNext())
+		{
+			currentLine = file.nextLine();
+			
+			if(currentLine.isEmpty())
+			{
+				continue;
+			}
+			
+			ArrayList<Integer> row = new ArrayList<>();
+			
+			String[] values = currentLine.trim().split(" ");
+			
+			for(String val : values)
+			{
+				row.add(Integer.parseInt(val));
+			}
+			
+			arr.add(row);
+		}
+		
+		arr.remove(0);
+		arr.remove(0);
+		
+		return arr;
+	}
+	
+	public int[] AxeLoc()
+	{
+		try
+		{
+			axelocfile = new Scanner(new File("Resources/Locations/AxeLoc.file"));
+		}
+		catch(Exception e)
+		{
+			System.out.println("Can't read from file or file not found!");
+		}
+		
+		String currentLine;
+		currentLine = axelocfile.nextLine();
+		
+		String[] values = currentLine.trim().split(" ");
+		
+		int[] val = new int[2];
+		
+		val[0] = Integer.parseInt(values[0]);
+		val[1] = Integer.parseInt(values[1]);
+		
+		return val;
+	}
+	
+	public int[] BoatLoc()
+	{
+		try
+		{
+			boatlocfile = new Scanner(new File("Resources/Locations/BoatLoc.file"));
+		}
+		catch(Exception e)
+		{
+			System.out.println("Can't read from file or file not found!");
+		}
+		
+		String currentLine;
+		currentLine = boatlocfile.nextLine();
+		
+		String[] values = currentLine.trim().split(" ");
+		
+		int[] val = new int[2];
+		
+		val[0] = Integer.parseInt(values[0]);
+		val[1] = Integer.parseInt(values[1]);
+		
+		return val;
+	}
+	
 	@SuppressWarnings("static-access")
 	@Override
 	public void initialize(URL url, ResourceBundle resourceBundle)
 	{
-		FileRead fr = new FileRead();
-		fr.GetLines();
-		this.arr = fr.arr;
+		Viewer_Controller nw = new Viewer_Controller();
+		nw.ReadFile();
+		axeVal = nw.AxeLoc();
+		boatVal = nw.BoatLoc();
+		arr = nw.GetLines();
 		int row = 0;
 		for(ArrayList<Integer> ar : arr)
 		{
@@ -99,6 +200,17 @@ public class Viewer_Controller implements Initializable{
 								grid.getChildren().add(axe);
 								axeRow = grid.getRowIndex(path);
 								axeCol = grid.getColumnIndex(path);
+								try
+								{
+									Formatter AxeOut = new Formatter("Resources/Locations/AxeLoc.file");
+									AxeOut.format(axeRow + " " + axeCol);
+									AxeOut.close();
+								}
+								catch (Exception e2)
+								{
+									System.out.println("Cannot write file!");
+								}
+								axeFlag = 0;
 							}
 							else if(boatFlag == 1)
 							{
@@ -119,6 +231,17 @@ public class Viewer_Controller implements Initializable{
 								grid.getChildren().add(boat);
 								boatRow = grid.getRowIndex(path);
 								boatCol = grid.getColumnIndex(path);
+								try
+								{
+									Formatter BoatOut = new Formatter("Resources/Locations/BoatLoc.file");
+									BoatOut.format(boatRow + " " + boatCol);
+									BoatOut.close();
+								}
+								catch (Exception e2)
+								{
+									System.out.println("Cannot write file!");
+								}
+								boatFlag = 0;
 							}
 						});
 						path.setGraphic(new ImageView(pathImgFx));
@@ -159,6 +282,17 @@ public class Viewer_Controller implements Initializable{
 								grid.getChildren().add(axe);
 								axeRow = grid.getRowIndex(grass);
 								axeCol = grid.getColumnIndex(grass);
+								try
+								{
+									Formatter AxeOut = new Formatter("Resources/Locations/AxeLoc.file");
+									AxeOut.format(axeRow + " " + axeCol);
+									AxeOut.close();
+								}
+								catch (Exception e2)
+								{
+									System.out.println("Cannot write file!");
+								}
+								axeFlag = 0;
 							}
 							else if(boatFlag == 1)
 							{
@@ -179,6 +313,17 @@ public class Viewer_Controller implements Initializable{
 								grid.getChildren().add(boat);
 								boatRow = grid.getRowIndex(grass);
 								boatCol = grid.getColumnIndex(grass);
+								try
+								{
+									Formatter BoatOut = new Formatter("Resources/Locations/BoatLoc.file");
+									BoatOut.format(boatRow + " " + boatCol);
+									BoatOut.close();
+								}
+								catch (Exception e2)
+								{
+									System.out.println("Cannot write file!");
+								}
+								boatFlag = 0;
 							}
 						});
 						grass.setGraphic(new ImageView(grassImgFx));
@@ -219,6 +364,17 @@ public class Viewer_Controller implements Initializable{
 								grid.getChildren().add(axe);
 								axeRow = grid.getRowIndex(flower);
 								axeCol = grid.getColumnIndex(flower);
+								try
+								{
+									Formatter AxeOut = new Formatter("Resources/Locations/AxeLoc.file");
+									AxeOut.format(axeRow + " " + axeCol);
+									AxeOut.close();
+								}
+								catch (Exception e2)
+								{
+									System.out.println("Cannot write file!");
+								}
+								axeFlag = 0;
 							}
 							else if(boatFlag == 1)
 							{
@@ -239,6 +395,17 @@ public class Viewer_Controller implements Initializable{
 								grid.getChildren().add(boat);
 								boatRow = grid.getRowIndex(flower);
 								boatCol = grid.getColumnIndex(flower);
+								try
+								{
+									Formatter BoatOut = new Formatter("Resources/Locations/BoatLoc.file");
+									BoatOut.format(boatRow + " " + boatCol);
+									BoatOut.close();
+								}
+								catch (Exception e2)
+								{
+									System.out.println("Cannot write file!");
+								}
+								boatFlag = 0;
 							}
 						});
 						flower.setGraphic(new ImageView(flowerImgFx));
@@ -300,32 +467,150 @@ public class Viewer_Controller implements Initializable{
 			}
 			row++;
 		}
+		BufferedImage axeImg = null;
+		try
+		{
+			axeImg = ImageIO.read(new File("Resources/Imgs/Axe.png"));
+		}
+		catch (IOException e1)
+		{
+			System.out.println("Image not found!");
+		}
+		Image axeImgFx = SwingFXUtils.toFXImage(axeImg, null);
+		axe = new Label();
+		axe.setGraphic(new ImageView(axeImgFx));
+		grid.setConstraints(axe, axeVal[1], axeVal[0]);
+		grid.getChildren().add(axe);
+		
+		BufferedImage boatImg = null;
+		try
+		{
+			boatImg = ImageIO.read(new File("Resources/Imgs/Boat.png"));
+		}
+		catch (IOException e1)
+		{
+			System.out.println("Image not found!");
+		}
+		Image boatImgFx = SwingFXUtils.toFXImage(boatImg, null);
+		boat = new Label();
+		boat.setGraphic(new ImageView(boatImgFx));
+		grid.setConstraints(boat, boatVal[1], boatVal[0]);
+		grid.getChildren().add(boat);
 	}
 	
 	public void SetAxeLocation()
 	{
 		axeFlag = 1;
-		boatFlag = 0;
 	}
 	
 	public void SetBoatLocation()
 	{
 		boatFlag = 1;
-		axeFlag = 0;
 	}
 	
-	public void OutFile()
+	@SuppressWarnings("static-access")
+	public void AxeToDefault()
 	{
+		Scanner axeDef = null;
+		try {
+			axeDef = new Scanner(new File("Resources/Locations/DefAxeLoc.file"));
+		} catch (FileNotFoundException e) {
+			System.out.println("File not found!");
+		}
+		
+		String currentLine;
+		currentLine = axeDef.nextLine();
+		
+		String[] values = currentLine.trim().split(" ");
+		
+		int[] val = new int[2];
+		
+		val[0] = Integer.parseInt(values[0]);
+		val[1] = Integer.parseInt(values[1]);
+		
+		grid.getChildren().remove(axe);
+		BufferedImage axeImg = null;
 		try
 		{
-			Formatter outputFile = new Formatter("Resources/Locations/AxeBoatPosition.file");
-			outputFile.format("0 " + axeRow + " " + axeCol + "%n");
-    		outputFile.format("1 " + boatRow + " " + boatCol);
-    		outputFile.close();
+			axeImg = ImageIO.read(new File("Resources/Imgs/Axe.png"));
 		}
-		catch (Exception e)
+		catch (IOException e1)
 		{
-			System.out.println("Cannot produce output file");
+			System.out.println("Image not found!");
 		}
+		Image axeImgFx = SwingFXUtils.toFXImage(axeImg, null);
+		axe = new Label();
+		axe.setGraphic(new ImageView(axeImgFx));
+		grid.setConstraints(axe, val[1], val[0]);
+		grid.getChildren().add(axe);
+		try
+		{
+			Formatter AxeOut = new Formatter("Resources/Locations/AxeLoc.file");
+			AxeOut.format(val[0] + " " + val[1]);
+			AxeOut.close();
+		}
+		catch (Exception e2)
+		{
+			System.out.println("Cannot write file!");
+		}
+	}
+	
+	@SuppressWarnings("static-access")
+	public void BoatToDefault()
+	{
+		Scanner boatDef = null;
+		try {
+			boatDef = new Scanner(new File("Resources/Locations/DefBoatLoc.file"));
+		} catch (FileNotFoundException e) {
+			System.out.println("File not found!");
+		}
+		
+		String currentLine;
+		currentLine = boatDef.nextLine();
+		
+		String[] values = currentLine.trim().split(" ");
+		
+		int[] val = new int[2];
+		
+		val[0] = Integer.parseInt(values[0]);
+		val[1] = Integer.parseInt(values[1]);
+		
+		grid.getChildren().remove(boat);
+		BufferedImage boatImg = null;
+		try
+		{
+			boatImg = ImageIO.read(new File("Resources/Imgs/Boat.png"));
+		}
+		catch (IOException e1)
+		{
+			System.out.println("Image not found!");
+		}
+		Image boatImgFx = SwingFXUtils.toFXImage(boatImg, null);
+		boat = new Label();
+		boat.setGraphic(new ImageView(boatImgFx));
+		grid.setConstraints(boat, val[1], val[0]);
+		grid.getChildren().add(boat);
+		try
+		{
+			Formatter AxeOut = new Formatter("Resources/Locations/BoatLoc.file");
+			AxeOut.format(val[0] + " " + val[1]);
+			AxeOut.close();
+		}
+		catch (Exception e2)
+		{
+			System.out.println("Cannot write file!");
+		}
+	}
+	
+	public void RunDH()
+	{
+		Game nw = new Game();
+		nw.RunGame();
+	}
+	
+	public void ExitMapViewer()
+	{
+		Stage stage = (Stage) rundh.getScene().getWindow();
+		stage.close();
 	}
 }

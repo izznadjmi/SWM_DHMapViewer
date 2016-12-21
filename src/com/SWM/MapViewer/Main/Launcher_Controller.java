@@ -39,11 +39,6 @@ public class Launcher_Controller {
 			secondaryStage.setTitle("Map Viewer");
 			secondaryStage.setScene(scene);
 			secondaryStage.show();
-			
-			secondaryStage.setOnCloseRequest(e -> {
-				Viewer_Controller vc = new Viewer_Controller();
-				vc.OutFile();
-			});
 		} 
 		catch(Exception e) 
 		{
