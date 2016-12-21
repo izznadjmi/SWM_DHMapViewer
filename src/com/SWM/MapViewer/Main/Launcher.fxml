@@ -11,7 +11,7 @@
          <font>
             <Font name="Diamond Script" size="24.0" />
          </font></Button>
-      <Button fx:id="ViewerLaunch" layoutX="270.0" layoutY="200.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="150.0" text="Map Viewer">
+      <Button fx:id="ViewerLaunch" layoutX="270.0" layoutY="200.0" mnemonicParsing="false" onAction="#Launch_Viewer" prefHeight="60.0" prefWidth="150.0" text="Map Viewer">
          <font>
             <Font name="Diamond Script" size="23.0" />
          </font></Button>
