@@ -7,7 +7,9 @@ package com.neet.DiamondHunter.GameState;
 
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
+import java.io.File;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 import com.neet.DiamondHunter.Entity.Diamond;
 import com.neet.DiamondHunter.Entity.Item;
@@ -173,15 +175,56 @@ public class PlayState extends GameState {
 	private void populateItems() {
 		
 		Item item;
+		int axeRow = -1, axeCol = -1;
+		int boatRow = -1, boatCol = -1;
+		
+		Scanner file = null;
+		try
+		{
+			file = new Scanner(new File("Resources/Locations/AxeBoatPosition.file"));
+		}
+		catch (Exception e)
+		{
+			System.out.println("Cannot read from file");
+		}
+		
+		while(file.hasNext()){
+	    	if(Integer.parseInt(file.next())==0){
+	    	axeRow=Integer.parseInt(file.next());
+	    	System.out.println("Axe Row: " + axeRow);
+	    	axeCol=Integer.parseInt(file.next());
+	    	System.out.println("Axe Column: " + axeCol);
+	    	}
+	    	else{
+	    	boatRow=Integer.parseInt(file.next());
+	    	System.out.println("Boat Row: " + boatRow);
+	    	boatCol=Integer.parseInt(file.next());
+	    	System.out.println("Boat Column: " + boatCol);
+	    	}
+    	}
 		
 		item = new Item(tileMap);
 		item.setType(Item.AXE);
-		item.setTilePosition(26, 37);
+		if(axeRow == -1)
+		{
+			item.setTilePosition(26, 37);
+		}
+		else
+		{
+			item.setTilePosition(axeRow, axeCol);
+		}
 		items.add(item);
 		
 		item = new Item(tileMap);
 		item.setType(Item.BOAT);
-		item.setTilePosition(12, 4);
+		if(boatRow == -1)
+		{
+			item.setTilePosition(12, 4);
+		}
+		else
+		{
+			item.setTilePosition(boatRow, boatCol);
+		}
 		items.add(item);
 		
 	}
