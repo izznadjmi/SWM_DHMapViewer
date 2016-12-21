@@ -1,5 +1,8 @@
 package com.SWM.MapViewer.Main;
 
+import java.util.Formatter;
+
+import com.SWM.MapViewer.ViewApp.Viewer_Controller;
 import com.neet.DiamondHunter.Main.Game;
 
 import javafx.fxml.FXML;
@@ -36,6 +39,11 @@ public class Launcher_Controller {
 			secondaryStage.setTitle("Map Viewer");
 			secondaryStage.setScene(scene);
 			secondaryStage.show();
+			
+			secondaryStage.setOnCloseRequest(e -> {
+				Viewer_Controller vc = new Viewer_Controller();
+				vc.OutFile();
+			});
 		} 
 		catch(Exception e) 
 		{
