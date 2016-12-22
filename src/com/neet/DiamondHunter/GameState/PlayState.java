@@ -7,11 +7,8 @@ package com.neet.DiamondHunter.GameState;
 
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
-import java.io.File;
-import java.io.FileNotFoundException;
 import java.util.ArrayList;
-import java.util.Scanner;
-
+import com.SWM.MapViewer.ViewApp.Viewer_Controller;
 import com.neet.DiamondHunter.Entity.Diamond;
 import com.neet.DiamondHunter.Entity.Item;
 import com.neet.DiamondHunter.Entity.Player;
@@ -175,43 +172,14 @@ public class PlayState extends GameState {
 	
 	private void populateItems() {
 		Item item;
-		Scanner axeLoc = null;
-		
-		try
-		{
-			axeLoc = new Scanner(new File("Resources/Locations/AxeLoc.file"));
-		}
-		catch (FileNotFoundException e)
-		{
-			System.out.println("File not found!");
-		}
-		
-		String[] values = axeLoc.nextLine().trim().split(" ");
-		int[] axeVal = new int[2];
-		axeVal[0] = Integer.parseInt(values[0]);
-		axeVal[1] = Integer.parseInt(values[1]);
+		int[] axeVal = {Viewer_Controller.axeCol, Viewer_Controller.axeRow};
+		int[] boatVal = {Viewer_Controller.boatCol, Viewer_Controller.boatRow};
 		
 		item = new Item(tileMap);
 		item.setType(Item.AXE);
 		item.setTilePosition(axeVal[0], axeVal[1]);
 		items.add(item);
-		
-		Scanner boatLoc = null;
-		
-		try 
-		{
-			boatLoc = new Scanner(new File("Resources/Locations/BoatLoc.file"));
-		}
-		catch (FileNotFoundException e)
-		{
-			System.out.println("File not found!");
-		}
-		
-		values = boatLoc.nextLine().trim().split(" ");
-		int[] boatVal = new int[2];
-		boatVal[0] = Integer.parseInt(values[0]);
-		boatVal[1] = Integer.parseInt(values[1]);
-		
+
 		item = new Item(tileMap);
 		item.setType(Item.BOAT);
 		item.setTilePosition(boatVal[0], boatVal[1]);

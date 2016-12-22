@@ -7,7 +7,7 @@ public class FileRead {
 	
 	public void GetLines()
 	{
-		try(BufferedReader br = new BufferedReader(new FileReader("Resources/Maps/testmap.map")))
+		try(BufferedReader br = new BufferedReader(new InputStreamReader(this.getClass().getResourceAsStream("/Maps/testmap.map"))))
 		{
 			String currentLine;
 			
@@ -35,7 +35,7 @@ public class FileRead {
 		}
 		catch (IOException e)
 		{
-			System.out.println("Can't read from file or file not found!");
+			System.out.println("Can't read from file or file not found! (Map)");
 		}
 	}
 }
