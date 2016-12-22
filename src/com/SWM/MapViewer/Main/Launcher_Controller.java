@@ -6,6 +6,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
@@ -30,9 +31,11 @@ public class Launcher_Controller {
 		{
 			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/com/SWM/MapViewer/ViewApp/MapViewer.fxml"));
 			AnchorPane root = (AnchorPane) fxmlLoader.load();
-			Scene scene = new Scene(root, 840, 665);
+			Scene scene = new Scene(root, 840, 655);
 			secondaryStage = new Stage();
 			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+			secondaryStage.getIcons().add(new Image(this.getClass().getResourceAsStream("/Imgs/DH.png")));
+			secondaryStage.setResizable(false);
 			secondaryStage.setTitle("Map Viewer");
 			secondaryStage.setScene(scene);
 			secondaryStage.show();

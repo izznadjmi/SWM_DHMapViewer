@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.DialogPane?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+
+<AnchorPane maxHeight="500.0" maxWidth="320.0" minHeight="500.0" minWidth="320.0" prefHeight="500.0" prefWidth="320.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.60" fx:controller="com.SWM.MapViewer.ViewApp.About.About_Controller">
+   <children>
+      <AnchorPane fx:id="ImagePane" layoutX="24.0" layoutY="36.0" maxHeight="100.0" maxWidth="100.0" minHeight="100.0" minWidth="100.0" prefHeight="100.0" prefWidth="100.0" />
+      <Text layoutX="135.0" layoutY="97.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Map Viewer">
+         <font>
+            <Font name="System Bold" size="27.0" />
+         </font>
+      </Text>
+      <DialogPane contentText="Map Viewer is an app that shows the Diamond Hunter Map.&#10;&#10;It also shows the dafault Axe and Boat location prior to the game.&#10;&#10;Users can edit the Axe and Boat location, and play with the edited location by running Diamond Hunter through the map viewer.&#10;&#10;Edited Axe and Boat locations will be shown on the map." layoutX="10.0" layoutY="150.0" maxHeight="340.0" maxWidth="300.0" minHeight="340.0" minWidth="300.0" prefHeight="340.0" prefWidth="300.0" />
+   </children>
+</AnchorPane>

@@ -9,7 +9,9 @@ import java.util.ResourceBundle;
 import com.neet.DiamondHunter.Main.Game;
 
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.MenuItem;
@@ -287,6 +289,26 @@ public class Viewer_Controller implements Initializable{
 	{
 		Game nw = new Game();
 		nw.RunGame();
+	}
+	
+	public void AboutMapViewer()
+	{
+		try 
+		{
+			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/com/SWM/MapViewer/ViewApp/About/About.fxml"));
+			AnchorPane root = (AnchorPane) fxmlLoader.load();
+			Scene scene = new Scene(root, 320, 500);
+			Stage helpStage = new Stage();
+			helpStage.getIcons().add(new Image(this.getClass().getResourceAsStream("/Imgs/DH.png")));
+			helpStage.setTitle("About Map");
+			helpStage.setResizable(false);
+			helpStage.setScene(scene);
+			helpStage.show();
+		} 
+		catch(Exception e) 
+		{
+			e.printStackTrace();
+		}
 	}
 	
 	public void ExitMapViewer()

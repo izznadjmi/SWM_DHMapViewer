@@ -12,7 +12,7 @@
 
 <AnchorPane fx:id="base" maxHeight="665.0" minHeight="665.0" prefHeight="665.0" prefWidth="840.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.SWM.MapViewer.ViewApp.Viewer_Controller">
    <children>
-      <MenuBar maxHeight="25.0" minHeight="25.0" prefHeight="25.0" prefWidth="840.0" AnchorPane.bottomAnchor="640.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <MenuBar maxHeight="25.0" minHeight="25.0" prefHeight="25.0" prefWidth="840.0" AnchorPane.bottomAnchor="639.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <menus>
           <Menu mnemonicParsing="false" text="File">
             <items>
@@ -31,12 +31,12 @@
           </Menu>
           <Menu mnemonicParsing="false" text="Help">
             <items>
-              <MenuItem mnemonicParsing="false" text="About" />
+              <MenuItem mnemonicParsing="false" onAction="#AboutMapViewer" text="About" />
             </items>
           </Menu>
         </menus>
       </MenuBar>
-      <GridPane fx:id="grid" layoutY="25.0">
+      <GridPane fx:id="grid" layoutY="28.0">
         <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" maxWidth="16.0" minWidth="16.0" prefWidth="16.0" />
             <ColumnConstraints hgrow="SOMETIMES" maxWidth="16.0" minWidth="16.0" prefWidth="100.0" />
